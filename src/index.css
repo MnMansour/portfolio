@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-ink-950 font-sans text-slate-300 antialiased selection:bg-accent-cyan/30 selection:text-white;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-slate-50;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+  .card {
+    @apply rounded-2xl border border-white/[0.07] bg-white/[0.02] backdrop-blur-sm transition duration-300;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-accent-cyan/30 hover:bg-white/[0.04] hover:shadow-glow;
+  }
+  .tag {
+    @apply inline-flex items-center rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 font-mono text-[11px] font-medium text-slate-300;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-accent-cyan to-accent-violet text-ink-950 shadow-glow hover:brightness-110;
+  }
+  .btn-ghost {
+    @apply btn border border-white/10 bg-white/[0.03] text-slate-100 hover:border-accent-cyan/40 hover:bg-white/[0.06];
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-cyan via-sky-300 to-accent-violet bg-clip-text text-transparent;
+  }
+}
+
+/* Scroll-reveal animation driven by useReveal() */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

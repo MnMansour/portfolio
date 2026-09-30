@@ -1,0 +1,9 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// Relative base works for both user sites (username.github.io) and
+// project sites (username.github.io/repo-name) without extra config.
+export default defineConfig({
+  plugins: [react()],
+  base: './',
+})
